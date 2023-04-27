@@ -244,11 +244,11 @@ main()
 		cout<<"----- DEBIT/WITHDRAW Amount -----"<<endl;
 		cout<<"_______________________________"<<endl;
 		cout<<endl;
-		cout<<"a. Enter your Account Number  => Rs. ";
+		cout<<"a. Enter your Account Number  => ";
 		cin>>accNumber;
 		cout<<"a. Enter your Account PIN No.  => ";
 		cin>>pin;
-		cout<<"a. Enter the Amount you want to Debit/Withdraw => ";
+		cout<<"a. Enter the Amount you want to Debit/Withdraw => Rs. ";
 		cin>>amt;
 		ketan.Debit_amt(accNumber,pin,amt);
 		x=bankPage();
