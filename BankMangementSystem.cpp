@@ -1,7 +1,60 @@
 #include "iostream"
 #include "cstdlib"
 #include "time.h"
+
 using namespace std;
+
+string phNumber()
+{
+	string number;
+	bool valid=true;
+	cout<<"b. Enter your 10 Digit Mobile Number  => ";
+	cin>>number;
+	if (number.length()!=10)
+	{
+		cout<<endl;
+		cout<<"@@@@@@@@@  !!! INVALID !!!!  - Please Enter a valid 10 Digit Mobile Number  @@@@@@@@@@"<<endl;
+		cout<<endl;
+		return phNumber();
+	}
+	
+	for (int a = 0; a < number.length(); a++)
+	{
+		if(!isdigit(number[a]))  
+		{
+			
+			valid=false;
+			cout<<endl;
+			cout<<"@@@@@@@@@  !!! INVALID (Don't Enter Character) !!!!  - Please Enter a valid 10 Digit Mobile Number  @@@@@@@@@@"<<endl;
+			cout<<endl;
+			return phNumber();    
+		} 
+		
+	}
+	return number;
+
+}
+
+ unsigned short int pinF()
+{
+	unsigned short int pin ,Rpin;
+	      cout<<"d. Create a 4 digit PIN Number => " ;
+		cin>>pin;
+		cout<<"d. Re-Enter Your 4 digit PIN Number To Confirm => " ;
+		cin>>Rpin;
+		if(pin==Rpin){
+		//ketan.Acc_create(name,fname,number,pin);
+		//x=bankPage();	
+		return pin;
+		}
+		else  
+		{
+			cout<<endl;
+			cout<<"@@@@@@@@@@  PIN NOT MATCH @@@@@@@@@@"<<endl;
+			cout<<endl;
+			return pinF();
+		}
+}
 
 int bankPage()
 {     cout<<endl;
@@ -82,7 +135,7 @@ void Bank::AccDetail(signed int  long accNumber,unsigned short int AccPIN)
 		cout<< "Account Number:- "<<acc_number<<endl;
 		cout<< "IFSC code :- "<<ifsc<<endl;
 		cout<<"PIN :- "<<pin<<endl;
-		cout<<"Account Balance :- || "<<amount <<" ||"<<endl;
+		cout<<"Account Balance :- || Rs. "<<amount <<" ||"<<endl;
 		cout<<"-------------------------------------------" <<endl;
 	}
 	else if (accNumber!=acc_number || AccPIN!=pin)
@@ -98,7 +151,7 @@ void Bank::Credit_amt(signed int  long accNumber,double amt)
 { if (acc_number==accNumber)
 {
 	amount=amount+amt;
-	cout<<"NEW BALANCE IS :- "<<amount<<endl;
+	cout<<"NEW BALANCE IS :- Rs. "<<amount<<endl;
 	
 }
 else
@@ -116,9 +169,9 @@ void Bank::Debit_amt(signed int  long accNumber,unsigned short int pin,double am
 		if (amount>=amt)
 		{
 			amount=amount-amt;
-			cout<<" A Amount of "<<amt <<" is Debit from your account"<<endl;
+			cout<<" A Amount of Rs. "<<amt <<" is Debit from your account"<<endl;
 			cout<<endl;
-			cout<<"Available Balance is :- "<<amount<<endl;
+			cout<<"Available Balance is :- Rs. "<<amount<<endl;
 		}
 		else cout<<"!!!--INSUFFICENT BALANCE--!!!"<<endl;
 	}
@@ -146,14 +199,13 @@ main()
 		cout<<"_______________________________"<<endl;
 		cout<<"a. Enter your Name :- ";
 		getline(cin , name);
-		cout<<"b. Enter your Mobile Number  => ";
-		cin>>number;
+
+		number=phNumber();
 		cout<<"c. Enter your Father Name => ";
 		cin.ignore();
 		getline(cin,fname);
-		cout<<"d. Create a 4 digit PIN Number => " ;
-		cin>>pin;
-		
+
+		pin =pinF();
 		ketan.Acc_create(name,fname,number,pin);
 		x=bankPage();
 		
@@ -181,7 +233,7 @@ main()
 		cout<<endl;
 		cout<<"a. Enter your Account Number  => ";
 		cin>>accNumber;
-		cout<<"a. Enter the Amount you want to Credit/Deposit => ";
+		cout<<"a. Enter the Amount you want to Credit/Deposit => Rs. ";
 		cin>>amt;
 		ketan.Credit_amt(accNumber,amt);
 		x=bankPage();
@@ -192,7 +244,7 @@ main()
 		cout<<"----- DEBIT/WITHDRAW Amount -----"<<endl;
 		cout<<"_______________________________"<<endl;
 		cout<<endl;
-		cout<<"a. Enter your Account Number  => ";
+		cout<<"a. Enter your Account Number  => Rs. ";
 		cin>>accNumber;
 		cout<<"a. Enter your Account PIN No.  => ";
 		cin>>pin;
@@ -201,7 +253,7 @@ main()
 		ketan.Debit_amt(accNumber,pin,amt);
 		x=bankPage();
 	}
-	
+		
 }
 if (x==5)
 {
