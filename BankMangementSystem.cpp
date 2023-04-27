@@ -40,7 +40,7 @@ string phNumber()
 	unsigned short int pin ,Rpin;
 	      cout<<"d. Create a 4 digit PIN Number => " ;
 		cin>>pin;
-		cout<<"d. Re-Enter Your 4 digit PIN Number To Confirm => " ;
+		cout<<"e. Re-Enter Your 4 digit PIN Number To Confirm => " ;
 		cin>>Rpin;
 		if(pin==Rpin){
 		//ketan.Acc_create(name,fname,number,pin);
@@ -233,7 +233,7 @@ main()
 		cout<<endl;
 		cout<<"a. Enter your Account Number  => ";
 		cin>>accNumber;
-		cout<<"a. Enter the Amount you want to Credit/Deposit => Rs. ";
+		cout<<"b. Enter the Amount you want to Credit/Deposit => Rs. ";
 		cin>>amt;
 		ketan.Credit_amt(accNumber,amt);
 		x=bankPage();
@@ -246,9 +246,9 @@ main()
 		cout<<endl;
 		cout<<"a. Enter your Account Number  => ";
 		cin>>accNumber;
-		cout<<"a. Enter your Account PIN No.  => ";
+		cout<<"b. Enter your Account PIN No.  => ";
 		cin>>pin;
-		cout<<"a. Enter the Amount you want to Debit/Withdraw => Rs. ";
+		cout<<"c. Enter the Amount you want to Debit/Withdraw => Rs. ";
 		cin>>amt;
 		ketan.Debit_amt(accNumber,pin,amt);
 		x=bankPage();
